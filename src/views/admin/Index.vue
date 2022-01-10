@@ -11,7 +11,7 @@
                 <el-table-column prop="username" label="管理员"></el-table-column>
                 <el-table-column prop="roles" label="角色" min-width="140"></el-table-column>
                 <el-table-column prop="login_count" label="登录次数" align="center"></el-table-column>
-                <el-table-column prop="login_ip" label="最后登录IP" min-width="70"></el-table-column>
+                <el-table-column prop="login_ip" label="最后登录IP" min-width="80"></el-table-column>
                 <el-table-column prop="login_time" label="最后登录时间" min-width="100"></el-table-column>
                 <el-table-column label="状态" align="center" min-width="90">
                     <template slot-scope="scope">

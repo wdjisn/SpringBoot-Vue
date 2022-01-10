@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrap">
     <div class="ms-login">
-      <div class="ms-title">智慧管理系统</div>
+      <div class="ms-title"><strong>SpringBoot-Admin</strong></div>
       <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
         <el-form-item prop="username">
           <el-input v-model="param.username" placeholder="请输入账号">
@@ -81,13 +81,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .login-wrap {
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url(../../assets/image/login.jpg);
-  background-size: 100% 100%;
+  /* background-image: url(../../assets/image/login.jpg); */
+  /* background-size: 100% 100%; */
 }
 
 .ms-login {
@@ -110,7 +110,11 @@ export default {
   text-align: center;
   font-size: 26px;
   font-weight: 500;
-  letter-spacing: 8px;
+  letter-spacing: 2px;
+
+    strong {
+      font: italic 1em Georgia, serif;
+    }
 }
 
 .ms-content {
