@@ -47,6 +47,15 @@ npm run build
 https://github.com/wdjisn/SpringBoot-Admin.git
 ```
 
+
+## 在线体验
+```
+网址：http://spba.baobaonames.cn/#/login
+账号：style
+密码：admin123
+```
+
+
 ## 疑问解答
 ```
 微信：wdjisn
