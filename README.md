@@ -13,50 +13,22 @@
 
 
 ## 安装步骤
-```
-下载代码
-
-git clone https://github.com/wdjisn/SpringBoot-Vue.git
-```
-
-```
-进入代码目录                                               
-```
-
-```
-安装项目依赖，等待安装完成之后，安装失败可用 cnpm 或 yarn
-
-npm install                                                     
-```
-
-```
-运行，浏览器访问 http://localhost:8080
-
-npm run serve                                                   
-```
-
-```
-执行构建命令，生成的dist文件夹
-
-npm run build                                                   
-```
+- git clone https://github.com/wdjisn/SpringBoot-Vue.git
+- cd 目录名称                                               
+- npm install                                                     
+- npm run serve     
+- 浏览器访问：http://localhost:8080     
 
 
 ## 后端代码仓库
-```
-https://github.com/wdjisn/SpringBoot-Admin.git
-```
+- https://github.com/wdjisn/SpringBoot-Admin.git
 
 
 ## 在线体验
-```
-网址：http://spba.baobaonames.cn/#/login
-账号：style
-密码：admin123
-```
+- 网址：http://spba.baobaonames.cn/#/login
+- 账号：style
+- 密码：admin123
 
 
 ## 疑问解答
-```
-微信：wdjisn
-```
+- 微信：wdjisn
