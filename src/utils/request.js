@@ -3,7 +3,7 @@ import axios from 'axios'
 import router from '../router'
 
 const service = axios.create({
-    baseURL: 'spba',
+    baseURL: 'spba-api',
     timeout: 5000
 })
 

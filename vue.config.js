@@ -6,7 +6,7 @@ module.exports = {
     devServer: {
         // 设置代理
         proxy: {
-            '/spba': {
+            '/spba-api': {
                 target: 'http://localhost:8082',
                 changeOrigin: true,
                 pathRewrite: {
