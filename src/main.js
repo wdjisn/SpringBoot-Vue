@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 
 // 使用钩子函数对路由进行权限验证
 router.beforeEach((to, from, next) => {
-  var menu = localStorage.getItem('spba-menu');
+  var menu = sessionStorage.getItem('spba-menu');
   if (to.path == '/login') {
     next()
   } else if (to.path !== '/login' && !menu) {
@@ -32,11 +32,11 @@ router.beforeEach((to, from, next) => {
       })
     })
     if (lock == false) {
-      localStorage.removeItem("spba-username")
-      localStorage.removeItem("spba-avatar")
-      localStorage.removeItem("spba-token")
-      localStorage.removeItem("spba-menu")
-      localStorage.removeItem("spba-perms")
+      sessionStorage.removeItem("spba-username")
+      sessionStorage.removeItem("spba-avatar")
+      sessionStorage.removeItem("spba-token")
+      sessionStorage.removeItem("spba-menu")
+      sessionStorage.removeItem("spba-perms")
       next('/login')
     } else {
       next()

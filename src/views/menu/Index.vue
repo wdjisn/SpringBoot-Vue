@@ -72,7 +72,7 @@ export default {
             edit_visible: false,
             drawer_width: '500px',
             expand_all: true,
-            perms: localStorage.getItem('spba-perms'),
+            perms: sessionStorage.getItem('spba-perms'),
             tree_props: { children: 'children', hasChildren: 'hasChildren' }           
         }
     },

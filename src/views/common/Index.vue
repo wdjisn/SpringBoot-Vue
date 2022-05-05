@@ -148,7 +148,7 @@ export default {
     },
     // 菜单选中记忆
     sideBarLinkage() {
-      var tree = JSON.parse(localStorage.getItem("spba-menu"));
+      var tree = JSON.parse(sessionStorage.getItem("spba-menu"));
       var that = this;
       var path = this.$route.path;
       tree.forEach(function (item, index) {
@@ -165,7 +165,7 @@ export default {
     },
     // 获取权限
     getPermission() {
-      this.items = JSON.parse(localStorage.getItem("spba-menu"));
+      this.items = JSON.parse(sessionStorage.getItem("spba-menu"));
       this.sideBarLinkage();
       if (this.items[this.active]["children"] == undefined) {
         this.menu = [];

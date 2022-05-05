@@ -86,11 +86,11 @@ export default {
   },
   computed: {
     username() {
-      let username = localStorage.getItem("username")
+      let username = sessionStorage.getItem("username")
       return username
     },
     error_count() {
-      let error_count = localStorage.getItem("error_count")
+      let error_count = sessionStorage.getItem("error_count")
       return error_count
     }
   },
@@ -98,11 +98,11 @@ export default {
     // 用户名下拉菜单选择事件
     handleCommand(command) {
       if (command == "loginout") {
-        localStorage.removeItem("spba-username")
-        localStorage.removeItem("spba-avatar")
-        localStorage.removeItem("spba-token")
-        localStorage.removeItem("spba-menu")
-        localStorage.removeItem("spba-perms")
+        sessionStorage.removeItem("spba-username")
+        sessionStorage.removeItem("spba-avatar")
+        sessionStorage.removeItem("spba-token")
+        sessionStorage.removeItem("spba-menu")
+        sessionStorage.removeItem("spba-perms")
         this.$router.push("/login")
       }
       if (command == "changePassword") {
@@ -144,7 +144,7 @@ export default {
     // 修改密码成功回调
     onSuccess() {
       this.passwordVisible = false
-      localStorage.removeItem("username")
+      sessionStorage.removeItem("username")
       var that = this
       setTimeout(function () {
         that.$router.push("/login")

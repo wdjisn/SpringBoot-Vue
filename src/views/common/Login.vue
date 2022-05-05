@@ -52,11 +52,11 @@ export default {
                 this.loading = false
                 return false
               }
-              localStorage.setItem("spba-username", result.data.username)
-              localStorage.setItem("spba-avatar", result.data.avatar)
-              localStorage.setItem("spba-token", result.data.token)
-              localStorage.setItem("spba-menu", JSON.stringify(result.data.menu))
-              localStorage.setItem("spba-perms", JSON.stringify(result.data.perms))
+              sessionStorage.setItem("spba-username", result.data.username)
+              sessionStorage.setItem("spba-avatar", result.data.avatar)
+              sessionStorage.setItem("spba-token", result.data.token)
+              sessionStorage.setItem("spba-menu", JSON.stringify(result.data.menu))
+              sessionStorage.setItem("spba-perms", JSON.stringify(result.data.perms))
               this.loading = false
               if (result.data.menu[0]["children"].length == 0) {
                 this.$router.push("/" + result.data.menu[0]["path"])

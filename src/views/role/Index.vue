@@ -79,7 +79,7 @@ export default {
             create_visible: false,
             edit_visible: false,
             drawe_width: '500px',
-            perms: localStorage.getItem('spba-perms')
+            perms: sessionStorage.getItem('spba-perms')
         }
     },
     created() {

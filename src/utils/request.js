@@ -10,7 +10,7 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
     config => {
-        config.headers["satoken"] = localStorage.getItem('spba-token');
+        config.headers["satoken"] = sessionStorage.getItem('spba-token');
         return config;
     }
 );
@@ -21,10 +21,10 @@ service.interceptors.response.use(
         if (response.status === 200) {
             // 拦截登录失效、无权限操作
             if (response.data.code == 501) {
-                localStorage.removeItem('spba-token');
-                localStorage.removeItem('spba-username');
-                localStorage.removeItem('spba-menu');
-                localStorage.removeItem('spba-perms');
+                sessionStorage.removeItem('spba-token');
+                sessionStorage.removeItem('spba-username');
+                sessionStorage.removeItem('spba-menu');
+                sessionStorage.removeItem('spba-perms');
                 Vue.prototype.$alert(response.data.message, {
                     confirmButtonText: '确定',
                     showClose: false,
