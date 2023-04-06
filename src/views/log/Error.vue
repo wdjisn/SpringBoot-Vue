@@ -28,7 +28,7 @@
                             </div>
                             <div class="error-param">
                                 <span class="error-title">Time:</span>
-                                <el-tag type="danger">{{ scope.row.create_time }}</el-tag>
+                                <el-tag type="danger">{{ scope.row.createTime }}</el-tag>
                             </div>
                         </div>
                     </template>

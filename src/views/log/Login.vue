@@ -19,8 +19,8 @@
                 <el-table-column prop="id" label="登录编号" min-width="40px"></el-table-column>
                 <el-table-column prop="username" label="管理员名称"></el-table-column>
                 <el-table-column prop="roles" label="角色名称"></el-table-column>
-                <el-table-column prop="login_ip" label="登录IP"></el-table-column>
-                <el-table-column prop="create_time" label="登录时间"></el-table-column>
+                <el-table-column prop="loginIp" label="登录IP"></el-table-column>
+                <el-table-column prop="createTime" label="登录时间"></el-table-column>
             </el-table>
             <div class="pagination">
                 <el-pagination

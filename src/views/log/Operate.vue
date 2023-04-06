@@ -21,7 +21,7 @@
                 <el-table-column prop="method" label="请求方式"></el-table-column>
                 <el-table-column prop="username" label="操作人员"></el-table-column>
                 <el-table-column prop="ip" label="操作IP"></el-table-column>
-                <el-table-column prop="create_time" label="操作时间" min-width="90px"></el-table-column>
+                <el-table-column prop="createTime" label="操作时间" min-width="90px"></el-table-column>
                 <el-table-column label="操作" minWidth="70" align="center">
                     <template slot-scope="scope">
                         <el-button v-if="scope.row.root != 1" icon="el-icon-view" type="primary" @click="handleView(scope.row)">详情</el-button>
@@ -39,8 +39,8 @@
                 ></el-pagination>
             </div>
         </div>
-        <drawer title="操作日志" :display.sync="view_visible" :width="drawe_width">
-            <operate-view v-if="view_visible == true" :operate_log="operate_log"></operate-view>
+        <drawer title="操作日志" :display.sync="viewVisible" :width="drawe_width">
+            <operate-view v-if="viewVisible == true" :operateLog="operateLog"></operate-view>
         </drawer>
     </div>
 </template>
@@ -64,8 +64,8 @@ export default {
             data: [],
             total: 0,
             dateTime: [],
-            operate_log: {},
-            view_visible: false,
+            operateLog: {},
+            viewVisible: false,
             drawe_width: '500px'
         }
     },
@@ -106,8 +106,8 @@ export default {
         },
         // 详情
         handleView(row) {
-            this.view_visible = true
-            this.operate_log = row
+            this.viewVisible = true
+            this.operateLog = row
         }
     }
 }

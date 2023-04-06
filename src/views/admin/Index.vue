@@ -10,9 +10,9 @@
             <el-table :data="data">
                 <el-table-column prop="username" label="管理员"></el-table-column>
                 <el-table-column prop="roles" label="角色" min-width="140"></el-table-column>
-                <el-table-column prop="login_count" label="登录次数" align="center"></el-table-column>
-                <el-table-column prop="login_ip" label="最后登录IP" min-width="80"></el-table-column>
-                <el-table-column prop="login_time" label="最后登录时间" min-width="100"></el-table-column>
+                <el-table-column prop="loginCount" label="登录次数" align="center"></el-table-column>
+                <el-table-column prop="loginIp" label="最后登录IP" align="center" min-width="80"></el-table-column>
+                <el-table-column prop="loginTime" label="最后登录时间" align="center" min-width="100"></el-table-column>
                 <el-table-column label="状态" align="center" min-width="90">
                     <template slot-scope="scope">
                         <el-switch
@@ -59,12 +59,12 @@
             </div>
         </div>
         <!-- 添加弹出框 -->
-        <drawer title="添加管理员" :display.sync="create_visible" :width="drawe_width">
-            <create-admin v-if="create_visible == true" @on-success="onSuccess"></create-admin>
+        <drawer title="添加管理员" :display.sync="createVisible" :width="draweWidth">
+            <create-admin v-if="createVisible == true" @on-success="onSuccess"></create-admin>
         </drawer>
         <!-- 编辑弹出框 -->
-        <drawer title="编辑管理员" :display.sync="edit_visible" :width="drawe_width">
-            <edit-admin v-if="edit_visible == true" :admin_id="admin_id" @on-success="onSuccess"></edit-admin>
+        <drawer title="编辑管理员" :display.sync="editVisible" :width="draweWidth">
+            <edit-admin v-if="editVisible == true" :adminId="adminId" @on-success="onSuccess"></edit-admin>
         </drawer>
     </div>
 </template>
@@ -87,10 +87,10 @@ export default {
             },
             total: 0,
             data: [],
-            admin_id: 0,
-            create_visible: false,
-            edit_visible: false,
-            drawe_width: '500px',
+            adminId: 0,
+            createVisible: false,
+            editVisible: false,
+            draweWidth: '500px',
             perms: sessionStorage.getItem('spba-perms')
         }
     },
@@ -121,17 +121,17 @@ export default {
         },
         // 添加
         handleCreate() {
-            this.create_visible = true
+            this.createVisible = true
         },
         // 编辑
         handleEdit(row) {
-            this.admin_id = row.id
-            this.edit_visible = true
+            this.adminId = row.id
+            this.editVisible = true
         },
         // 添加、编辑成功回调
         onSuccess() {
-            this.create_visible = false
-            this.edit_visible = false
+            this.createVisible = false
+            this.editVisible = false
             this.getData()
         },
         // 删除

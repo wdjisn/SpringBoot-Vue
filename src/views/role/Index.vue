@@ -5,7 +5,7 @@
             <el-button type="primary" icon="el-icon-refresh" @click="handleRefresh">刷新</el-button>
             <el-table :data="data" class="table" ref="multipleTable" header-cell-class-name="table-header">
                 <el-table-column prop="name" label="角色"></el-table-column>
-                <el-table-column prop="admin_count" label="管理员数量" align="center"></el-table-column>
+                <el-table-column prop="adminCount" label="管理员数量" align="center"></el-table-column>
                 <el-table-column label="状态" align="center">
                     <template slot-scope="scope">
                         <el-switch
@@ -19,7 +19,7 @@
                         ></el-switch>
                     </template>
                 </el-table-column>
-                <el-table-column prop="create_time" label="创建时间"></el-table-column>
+                <el-table-column prop="createTime" label="创建时间" align="center"></el-table-column>
                 <el-table-column label="操作" minWidth="170" align="center">
                     <template slot-scope="scope">
                         <el-button v-if="perms.indexOf('role:query') != -1 && perms.indexOf('role:edit') != -1 && scope.row.root != 1" icon="el-icon-edit" type="primary" @click="handleEdit(scope.row)"
@@ -47,12 +47,12 @@
             </div>
         </div>
         <!-- 添加弹出框 -->
-        <drawer title="添加角色" :display.sync="create_visible" :width="drawe_width">
-            <create-role v-if="create_visible == true" @on-success="onSuccess"></create-role>
+        <drawer title="添加角色" :display.sync="createVisible" :width="draweWidth">
+            <create-role v-if="createVisible == true" @on-success="onSuccess"></create-role>
         </drawer>
         <!-- 编辑弹出框 -->
-        <drawer title="编辑角色" :display.sync="edit_visible" :width="drawe_width">
-            <edit-role v-if="edit_visible == true" :role_id="role_id" @on-success="onSuccess"></edit-role>
+        <drawer title="编辑角色" :display.sync="editVisible" :width="draweWidth">
+            <edit-role v-if="editVisible == true" :roleId="roleId" @on-success="onSuccess"></edit-role>
         </drawer>
     </div>
 </template>
@@ -75,10 +75,10 @@ export default {
             },
             total: 0,
             data: [],
-            role_id: 0,
-            create_visible: false,
-            edit_visible: false,
-            drawe_width: '500px',
+            roleId: 0,
+            createVisible: false,
+            editVisible: false,
+            draweWidth: '500px',
             perms: sessionStorage.getItem('spba-perms')
         }
     },
@@ -105,17 +105,17 @@ export default {
         },
         // 添加
         handleCreate() {
-            this.create_visible = true
+            this.createVisible = true
         },
         // 编辑
         handleEdit(row) {
-            this.role_id = row.id
-            this.edit_visible = true
+            this.roleId = row.id
+            this.editVisible = true
         },
         // 添加、编辑成功回调
         onSuccess() {
-            this.create_visible = false
-            this.edit_visible = false
+            this.createVisible = false
+            this.editVisible = false
             this.getData()
         },
         // 删除

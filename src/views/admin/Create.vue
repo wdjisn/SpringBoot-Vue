@@ -4,19 +4,19 @@
             <el-form-item prop="username" label="管理员">
                 <el-input v-model="form.username" placeholder="请输入管理员名称"></el-input>
             </el-form-item>
-            <el-form-item prop="role_ids" label="角色">
-                <el-cascader v-model="form.role_arr" :options="roles" :props="props" clearable style="width: 100%"></el-cascader>
+            <el-form-item label="角色">
+                <el-cascader v-model="form.roleArr" :options="roles" :props="props" clearable style="width: 100%"></el-cascader>
             </el-form-item>
             <el-form-item prop="password" label="密码">
                 <el-input v-model="form.password" placeholder="请输入密码"></el-input>
             </el-form-item>
-            <el-form-item prop="confirm_password" label="确认密码">
-                <el-input v-model="form.confirm_password" placeholder="请输入确认密码"></el-input>
+            <el-form-item prop="confirmPassword" label="确认密码">
+                <el-input v-model="form.confirmPassword" placeholder="请输入确认密码"></el-input>
             </el-form-item>
             <el-form-item label="状态">
                 <el-switch
                     class="tablescope"
-                    v-model="form.status_name"
+                    v-model="form.statusName"
                     active-color="#008080"
                     inactive-color="#dcdfe6"
                     active-text="开启"
@@ -41,11 +41,11 @@ export default {
             form: {
                 username: '',
                 password: '',
-                confirm_password: '',
-                role_arr: [],
-                role_ids: '',
+                confirmPassword: '',
+                roleArr: [],
+                roleIds: '',
                 status: '',
-                status_name: true
+                statusName: true
             },
             query: {
                 root: 0,
@@ -57,9 +57,8 @@ export default {
             props: { multiple: true, label: 'name', value: 'id' },
             rules: {
                 username: [{ required: true, message: '请输入管理员名称', trigger: 'blur' }],
-                role_arr: [{ required: true, message: '请选择角色', trigger: 'blur' }],
                 password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-                confirm_password: [{ required: true, message: '请输入确认密码', trigger: 'blur' }]
+                confirmPassword: [{ required: true, message: '请输入确认密码', trigger: 'blur' }]
             }
         }
     },
@@ -77,21 +76,21 @@ export default {
         saveCreate() {
             this.$refs.createAdmin.validate((valid) => {
                 if (valid) {
-                    if (this.form.confirm_password != this.form.password) {
+                    if (this.form.confirmPassword != this.form.password) {
                         this.$message.error("确认密码和密码不一致")
                         return false
                     }
                     this.loading = true
-                    if (this.form.status_name == true) {
+                    if (this.form.statusName == true) {
                         this.form.status = 1
                     } else {
                         this.form.status = 0
                     }
-                    var role_ids = ''
-                    this.form.role_arr.forEach(function(item) {
-                        role_ids += item[0] + ','
+                    var roleIds = ''
+                    this.form.roleArr.forEach(function(item) {
+                        roleIds += item[0] + ','
                     })
-                    this.form.role_ids = role_ids
+                    this.form.roleIds = roleIds
                     createAdmin(Qs.stringify(this.form)).then((res) => {
                         if (res.code == 200) {
                             this.$message.success('添加成功')

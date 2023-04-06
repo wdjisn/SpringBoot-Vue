@@ -3,17 +3,17 @@
         <div class="container">
             <el-button type="primary" icon="el-icon-circle-plus-outline" class="mt20" @click="handleCreate" v-if="perms.indexOf('menu:add') != -1">添加</el-button>
             <el-button type="primary" icon="el-icon-refresh" @click="handleRefresh">刷新</el-button>
-            <el-table :data="data" :default-expand-all="expand_all" row-key="id" :tree-props="tree_props">
-                <el-table-column prop="name" label="菜单名称" :show-overflow-tooltip="true" width="160"></el-table-column>
-                <el-table-column prop="icon" label="图标" align="center" width="100">
+            <el-table :data="data" :default-expand-all="expandAll" row-key="id" :tree-props="tree_props">
+                <el-table-column prop="name" label="菜单名称" :show-overflow-tooltip="true" min-width="130"></el-table-column>
+                <el-table-column prop="perms" label="权限标识" :show-overflow-tooltip="true"></el-table-column>
+                <el-table-column prop="path" label="组件路径" :show-overflow-tooltip="true"></el-table-column>
+                <el-table-column prop="icon" label="图标" align="center" min-width="80">
                     <template #default="scope">
                         <i :class="scope.row.icon" style="font-size: 18px"></i>
                     </template>
                 </el-table-column>
-                <el-table-column prop="perms" label="权限标识" :show-overflow-tooltip="true"></el-table-column>
-                <el-table-column prop="path" label="组件路径" :show-overflow-tooltip="true"></el-table-column>
-                <el-table-column prop="sort" label="排序" width="60"></el-table-column>
-                <el-table-column label="状态" align="center">
+                <el-table-column prop="sort" label="排序" min-width="80" align="center"></el-table-column>
+                <el-table-column label="状态" align="center" min-width="100">
                     <template slot-scope="scope">
                         <el-switch
                             class="tablescope"
@@ -45,12 +45,12 @@
             </el-table>
         </div>
         <!-- 添加弹出框 -->
-        <drawer title="添加菜单" :display.sync="create_visible" :width="drawer_width">
-            <create-menu v-if="create_visible == true" @on-success="onSuccess"></create-menu>
+        <drawer title="添加菜单" :display.sync="createVisible" :width="drawerWidth">
+            <create-menu v-if="createVisible == true" @on-success="onSuccess"></create-menu>
         </drawer>
         <!-- 编辑弹出框 -->
-        <drawer title="编辑菜单" :display.sync="edit_visible" :width="drawer_width">
-            <edit-menu v-if="edit_visible == true" :menu_id="menu_id" @on-success="onSuccess"></edit-menu>
+        <drawer title="编辑菜单" :display.sync="editVisible" :width="drawerWidth">
+            <edit-menu v-if="editVisible == true" :menuId="menuId" @on-success="onSuccess"></edit-menu>
         </drawer>
     </div>
 </template>
@@ -67,11 +67,11 @@ export default {
     data() {
         return {
             data: [],
-            menu_id: 0,
-            create_visible: false,
-            edit_visible: false,
-            drawer_width: '500px',
-            expand_all: true,
+            menuId: 0,
+            createVisible: false,
+            editVisible: false,
+            drawerWidth: '500px',
+            expandAll: true,
             perms: sessionStorage.getItem('spba-perms'),
             tree_props: { children: 'children', hasChildren: 'hasChildren' }           
         }
@@ -92,17 +92,17 @@ export default {
         },
         // 添加
         handleCreate() {
-            this.create_visible = true
+            this.createVisible = true
         },
         // 编辑
         handleEdit(row) {
-            this.menu_id = row.id
-            this.edit_visible = true
+            this.menuId = row.id
+            this.editVisible = true
         },
         // 添加、编辑成功回调
         onSuccess() {
-            this.create_visible = false
-            this.edit_visible = false
+            this.createVisible = false
+            this.editVisible = false
             this.getData()
         },
         // 删除

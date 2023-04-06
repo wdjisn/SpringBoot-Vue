@@ -8,19 +8,19 @@
                     <el-radio label="F">按钮</el-radio>
                 </el-radio-group>
             </el-form-item>
-            <el-form-item prop="parent_id" label="父级" v-if="parent_visible == true">
+            <el-form-item prop="parentId" label="父级" v-if="parentVisible == true">
                 <el-cascader :options="menus" :props="props" ref="selectParent" @change="changeParent()" style="width:100%"></el-cascader>
             </el-form-item>
             <el-form-item prop="name" label="名称">
                 <el-input v-model="form.name" placeholder="请输入名称"></el-input>
             </el-form-item>
-            <el-form-item prop="perms" label="权限标识" v-if="perms_visible == true">
+            <el-form-item prop="perms" label="权限标识" v-if="permsVisible == true">
                 <el-input v-model="form.perms" placeholder="请输入权限标识（C菜单、F按钮必填）"></el-input>
             </el-form-item>
-            <el-form-item prop="path" label="组件路径" v-if="path_visible == true">
+            <el-form-item prop="path" label="组件路径" v-if="pathVisible == true">
                 <el-input v-model="form.path" placeholder="请输入组件路径（C菜单必填）"></el-input>
             </el-form-item>
-            <el-form-item prop="icon" label="图标" v-if="icon_visible == true">
+            <el-form-item prop="icon" label="图标" v-if="iconVisible == true">
                 <el-input v-model="form.icon" placeholder="请输入图标类名，例：el-icon-lx-home（目录必填）"></el-input>
             </el-form-item>
             <el-form-item prop="sort" label="排序">
@@ -29,7 +29,7 @@
             <el-form-item prop="status" label="状态">
                 <el-switch
                     class="tablescope"
-                    v-model="form.status_name"
+                    v-model="form.statusName"
                     active-color="#008080"
                     inactive-color="#dcdfe6"
                     active-text="开启"
@@ -53,19 +53,19 @@ export default {
         return {
             form: {
                 type: 'M',
-                parent_id: '',
+                parentId: '',
                 name: '',
                 perms: '',
                 path: '',
                 icon: '',
                 sort: 0,
                 status: 1,
-                status_name: true
+                statusName: true
             },
-            parent_visible: false,
-            perms_visible: false,
-            path_visible: false,
-            icon_visible: true,
+            parentVisible: false,
+            permsVisible: false,
+            pathVisible: false,
+            iconVisible: true,
             menus: [],
             loading: false,
             props: { label: 'name', value: 'id' },
@@ -103,26 +103,26 @@ export default {
         // 选择菜单类型
         changeType() {
             if (this.form.type == 'M') {
-                this.parent_visible = false
-                this.perms_visible = false
-                this.path_visible = false
-                this.icon_visible = true
-                this.form.parent_id = ''
+                this.parentVisible = false
+                this.permsVisible = false
+                this.pathVisible = false
+                this.iconVisible = true
+                this.form.parentId = ''
                 this.form.perms = ''
                 this.form.path = ''
             } else if (this.form.type == 'C') {
                 this.getData()
-                this.parent_visible = true
-                this.perms_visible = true
-                this.path_visible = true
-                this.icon_visible = false
+                this.parentVisible = true
+                this.permsVisible = true
+                this.pathVisible = true
+                this.iconVisible = false
                 this.form.icon = ''
             } else if (this.form.type == 'F') {
                 this.getData()
-                this.parent_visible = true
-                this.perms_visible = true
-                this.path_visible = false
-                this.icon_visible = false
+                this.parentVisible = true
+                this.permsVisible = true
+                this.pathVisible = false
+                this.iconVisible = false
                 this.form.path = ''
                 this.form.icon = ''
             }
@@ -131,7 +131,7 @@ export default {
         changeParent() {
             var that = this;
             this.$refs.selectParent.getCheckedNodes().forEach(function (item) {
-               that.form.parent_id = item.value
+               that.form.parentId = item.value
             })
         },
         // 保存添加
@@ -139,7 +139,7 @@ export default {
             this.$refs.createMenu.validate((valid) => {
                 if (valid) {
                     if (this.form.type == "C") {
-                        if (this.form.parent_id == 0) {
+                        if (this.form.parentId == 0) {
                             this.$message.error("请选择父级目录")
                             return false
                         }
@@ -152,7 +152,7 @@ export default {
                             return false
                         }
                     } else if (this.form.type == "F") {
-                        if (this.form.parent_id == 0) {
+                        if (this.form.parentId == 0) {
                             this.$message.error("请选择父级菜单")
                             return false
                         }
@@ -162,12 +162,12 @@ export default {
                         }
                     }
                     this.loading = true
-                    if (this.form.status_name == true) {
+                    if (this.form.statusName == true) {
                         this.form.status = 1
                     } else {
                         this.form.status = 0
                     }
-                    this.form.parent_id = this.form.parent_id == '' ? 0 : this.form.parent_id
+                    this.form.parentId = this.form.parentId == '' ? 0 : this.form.parentId
                     createMenu(Qs.stringify(this.form)).then((res) => {
                         if (res.code == 200) {
                             this.$message.success('添加成功')
