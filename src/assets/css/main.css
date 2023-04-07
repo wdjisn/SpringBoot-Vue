@@ -176,7 +176,7 @@ a {
 
 .el-button--small,
 .el-button--small.is-round {
-    padding: 6.5px 6.5px !important;
+    padding: 6px 6px !important;
 } 
 
 .dialog-footer {
@@ -186,12 +186,12 @@ a {
 
 .el-table {
     font-size: 12px !important;
-    color:#606266 !important;
+    color:#333333 !important;
 }
 
 .el-form-item__label {
     font-size: 12px !important;
-    color:#606266 !important;
+    color:#333333 !important;
 }
 
 .cell {

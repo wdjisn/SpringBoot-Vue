@@ -18,10 +18,8 @@
                         <el-switch
                             class="tablescope"
                             v-model="scope.row.status"
-                            active-color="#008080"
-                            inactive-color="#dcdfe6"
-                            active-text="开启"
-                            inactive-text="关闭"
+                            active-text="正常"
+                            inactive-text="停用"
                             disabled
                         ></el-switch>
                     </template>
@@ -31,7 +29,7 @@
                         <el-button 
                             v-if="perms.indexOf('menu:query') != -1 && perms.indexOf('menu:edit') != -1" 
                             icon="el-icon-edit" 
-                            type="primary" 
+                            type="warning" 
                             @click="handleEdit(scope.row)">编辑</el-button>
                         <el-button
                         v-if="perms.indexOf('menu:del') != -1" 

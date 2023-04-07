@@ -11,10 +11,8 @@
                         <el-switch
                             class="tablescope"
                             v-model="scope.row.status"
-                            active-color="#008080"
-                            inactive-color="#dcdfe6"
-                            active-text="开启"
-                            inactive-text="关闭"
+                            active-text="正常"
+                            inactive-text="停用"
                             disabled
                         ></el-switch>
                     </template>
@@ -22,7 +20,7 @@
                 <el-table-column prop="createTime" label="创建时间" align="center"></el-table-column>
                 <el-table-column label="操作" minWidth="170" align="center">
                     <template slot-scope="scope">
-                        <el-button v-if="perms.indexOf('role:query') != -1 && perms.indexOf('role:edit') != -1 && scope.row.root != 1" icon="el-icon-edit" type="primary" @click="handleEdit(scope.row)"
+                        <el-button v-if="perms.indexOf('role:query') != -1 && perms.indexOf('role:edit') != -1 && scope.row.root != 1" icon="el-icon-edit" type="warning" @click="handleEdit(scope.row)"
                             >编辑</el-button
                         >
                         <el-button

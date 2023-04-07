@@ -17,10 +17,8 @@
                 <el-switch
                     class="tablescope"
                     v-model="form.statusName"
-                    active-color="#008080"
-                    inactive-color="#dcdfe6"
-                    active-text="开启"
-                    inactive-text="关闭"
+                    active-text="正常"
+                    inactive-text="停用"
                 ></el-switch>
             </el-form-item>
             <el-form-item>

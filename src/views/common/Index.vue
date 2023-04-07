@@ -207,18 +207,18 @@ export default {
       }
 
       .index-side-bar.active {
-        color: #008080;
+        color: #409EFF;
         background-color: #ffffff;
         position: relative;
 
         .active-ele {
           position: absolute;
           left: 0px;
-          top: 15px;
+          top: 12px;
           width: 5px;
-          height: 35px;
+          height: 42px;
           border-radius: 0 4px 4px 0;
-          background-color: #008080;
+          background-color: #409EFF;
         }
       }
 
@@ -260,8 +260,8 @@ export default {
       }
 
       .second-menu {
-        width: 65%;
-        height: 30px;
+        width: 63%;
+        height: 29px;
         margin: 15px auto;
         border-radius: 2px;
         padding-left: 15px;
@@ -270,10 +270,8 @@ export default {
       }
 
       .second-menu.active {
-        /* color: #7874d8; */
-        /* background-color: #e6ebff; */
         color: #ffffff;
-        background-color: #008080;
+        background-color: #409EFF;
       }
 
       .index-content {

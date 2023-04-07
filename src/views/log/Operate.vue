@@ -18,7 +18,13 @@
             <el-table :data="data" class="table" ref="multipleTable" header-cell-class-name="table-header">
                 <el-table-column prop="id" label="操作编号"></el-table-column>
                 <el-table-column prop="url" label="操作路径"></el-table-column>
-                <el-table-column prop="method" label="请求方式"></el-table-column>
+                <el-table-column prop="method" label="请求方式">
+                    <template slot-scope="scope">
+                        <el-tag v-if="scope.row.method == 'POST'">{{ scope.row.method }}</el-tag> 
+                        <el-tag v-else-if="scope.row.method == 'PUT'" type="warning">{{ scope.row.method }}</el-tag> 
+                        <el-tag v-else-if="scope.row.method == 'DELETE'" type="danger">{{ scope.row.method }}</el-tag> 
+                    </template>
+                </el-table-column>
                 <el-table-column prop="username" label="操作人员"></el-table-column>
                 <el-table-column prop="ip" label="操作IP"></el-table-column>
                 <el-table-column prop="createTime" label="操作时间" min-width="90px"></el-table-column>
