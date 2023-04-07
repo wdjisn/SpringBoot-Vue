@@ -19,25 +19,25 @@
                     <template slot-scope="scope">
                         <div>
                             <div class="error-param">
-                                <span class="error-title">Url:</span>
-                                <el-tag type="warning">{{ scope.row.url }}</el-tag>
+                                <span class="error-title">Method:</span>
+                                <el-tag>{{ scope.row.method }}</el-tag>
                             </div>
                             <div class="error-param">
-                                <span class="error-title">Method:</span>
-                                <el-tag type="success">{{ scope.row.method }}</el-tag>
+                                <span class="error-title">Url:</span>
+                                <el-tag type="danger">{{ scope.row.url }}</el-tag>
                             </div>
                             <div class="error-param">
                                 <span class="error-title">Time:</span>
-                                <el-tag type="danger">{{ scope.row.createTime }}</el-tag>
+                                <el-tag type="info">{{ scope.row.createTime }}</el-tag>
                             </div>
                         </div>
                     </template>
                 </el-table-column>
                 <el-table-column prop="date" label="错误信息">
                     <template slot-scope="scope">
-                        <div class="error-message">Message：{{ scope.row.message }}</div>
                         <div class="error-message">Params：{{ scope.row.params }}</div>
                         <div class="error-message">Exception：{{ scope.row.exception }}</div>
+                        <div class="error-message">Message：{{ scope.row.message }}</div>
                     </template>
                 </el-table-column>
             </el-table>
