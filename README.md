@@ -9,6 +9,8 @@
 
 ![菜单管理](public/static/menu.png)
 
+![错误日志](public/static/error.png)
+
 ![七牛云上传视频](public/static/upload.png)
 
 
